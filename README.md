@@ -1,16 +1,57 @@
-<h1> desktop-assistant
-A desktop assistant (which runs on your terminal for now) created using python</h1>
+# Desktop Assistant
 
-<h2>Features:</h2>
-Can play Music. You need to specify the path to your directory containing the mp3 files. As of now, no controls such as next or previous have been added. The commands that can play music are: ['play music','play some music','play a song']. This will play a random song from the specified folder.
-<br>
-Can open websites from your command. For now, only the websites that are mentioned in sites_list dictionary in the code, can be opened. Looking to optimise it so any website can be opened by command. Currently, you need to type/say "Open youtube" or "Open github", and the site will be launched. You can add sites you want by editing the sites_list dictionary.<br>
-Can set reminders. Write or say "Set reminder" or "Set a reminder", and a window will pop up, asking for what you need to be reminded of, and how many minutes from now. Enter your desired information, to get a notification alert on time. Please put a number in the time field for this, or it might run into an error (since I did not add a try-except statement where i should have.) Clicking the "Set" button on the reminder window should close the wwindow, but it is not working for some reason. Close that window manually, and you will get a notification on time. <br>
-Can launch apps. You can launch calculator app or open your emails by typing "Launch calculator" or "Launch Mail". As of now, only calculator, mail, and windows photoviewer can be opened with this method. However, you can add your specific applications that you want to launch via command. Head over to the applicationlauncher function, add an elif statement, put the command of your choice, and specify the path of the application within os.startfile(). This should allow you to open ypur custom apps through voice or text input.<br>
-Finally, this assistant can also hold normal conversations, used to generate text/stories or code, thanks to Palm Api. However to use this feature, you will need a palm ai api-key Without an api-key you can still use the other features mentioned above
+Desktop Assistant is a command-line Python-based desktop assistant. It provides various functionalities to assist you with tasks on your computer.
 
-Further Plans:
-To create an UI for interacting with the bot.
-Optimising the website launching feature
-Adding a feature that will allow user to play a specific song, by saying its name
-Making commands more flexible
+## Features
+
+### Music Player
+You can play music by specifying the path to a directory containing MP3 files. Supported music commands include:
+- `play music`
+- `play some music`
+- `play a song`
+
+The assistant will play a random song from the specified folder.
+
+### Website Launcher
+You can open websites using specific commands. Currently, only websites listed in the `sites_list` dictionary can be opened. To launch a site, use commands like:
+- `Open youtube`
+- `Open github`
+
+You can customize the list of supported websites by editing the `sites_list` dictionary in the code.
+
+### Reminders
+Set reminders with ease. Say or type "Set reminder" or "Set a reminder," and a window will prompt you to specify the reminder message and the number of minutes from now when the reminder should trigger. Be sure to enter a numeric value for the time. The reminder window's "Set" button should close the window, but manual closure may be required.
+
+### App Launcher
+Launch applications using simple commands. Supported applications include:
+- Calculator
+- Mail
+- Windows Photo Viewer
+
+You can add more applications by modifying the `applicationlauncher` function in the code.
+
+### Conversational AI
+Engage in natural language conversations and generate text, stories, or code using the Palm API. To use this feature, you'll need a valid API key.
+
+## Further Plans
+- Develop a graphical user interface (UI) for a more user-friendly interaction.
+- Optimize the website launching feature to support opening any website by command.
+- Add the ability to play specific songs by their names.
+- Enhance command flexibility and usability.
+
+## Requirements
+- Python
+- Necessary Python libraries (e.g., pyttsx3, requests)
+- Palm API key (for conversational AI)
+
+## Usage
+1. Clone this repository.
+2. Install the required libraries using `pip install -r requirements.txt`.
+3. Update the `sites_list` dictionary with your desired websites (for website launching).
+4. Configure the application launcher for your specific applications.
+5. Run the desktop assistant script.
+
+Enjoy the convenience of your very own desktop assistant!
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
