@@ -28,10 +28,11 @@ Launch applications using simple commands. Supported applications include:
 - Mail
 - Windows Photo Viewer
 
-You can add more applications by modifying the `applicationlauncher` function in the code.
+You can add more applications by modifying the `applicationlauncher` function in the code.Head over to the applicationlauncher function, add an elif statement, put the command of your choice, and specify the path of the application within os.startfile(). This should allow you to open ypur custom apps through voice or text input.
 
 ### Conversational AI
 Engage in natural language conversations and generate text, stories, or code using the Palm API. To use this feature, you'll need a valid API key.
+Without an API key you can still access the other features.
 
 ## Further Plans
 - Develop a graphical user interface (UI) for a more user-friendly interaction.
@@ -43,15 +44,3 @@ Engage in natural language conversations and generate text, stories, or code usi
 - Python
 - Necessary Python libraries (e.g., pyttsx3, requests)
 - Palm API key (for conversational AI)
-
-## Usage
-1. Clone this repository.
-2. Install the required libraries using `pip install -r requirements.txt`.
-3. Update the `sites_list` dictionary with your desired websites (for website launching).
-4. Configure the application launcher for your specific applications.
-5. Run the desktop assistant script.
-
-Enjoy the convenience of your very own desktop assistant!
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
