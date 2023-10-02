@@ -12,12 +12,13 @@ import random
 import webbrowser
 from tkinter import *
 #set palm api-key
-palm.configure(api_key="Your API_key")
+palm.configure(api_key="Your API_KEY")
 
 # Create a pyttsx3 engine
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)#(0 for male voice or 1 for female voice)
+engine.rate=1
 #Function to take input Via Mic
 def commandinput():
     r = sr.Recognizer()
@@ -43,12 +44,13 @@ def PlayMusic():
     pygame.mixer.music.play()
     time.sleep(duration)
 
-#list the site name, along with their .com or .net or .to
+#list the site name, along woth their .com or .net or .to
 sites_list = {
     "youtube": "com",
     "github": "com",
     "aniwatch": "to",
-    "google": "com"
+    "google": "com",
+    "vyvymanga": "net"
 }
 def OpenBrowser(query):
     query=query.lower()
@@ -73,6 +75,8 @@ def AppLauncher(query):
     elif query in ('launch email','launch mail'):
         os.startfile('mailto:') #will open your default mail app
         return 1
+    elif query=='launch discord':
+        os.startfile("C:\\Users\\wwwri\\Desktop\\Discord.lnk") #Path to the discord shortcut. You can add your preffered apps to open on command like this.
     else:
         return 0
 
@@ -126,9 +130,20 @@ defaults = {
   'top_p': 0.95,
 }
 context = "Stella is an AI chat assistant designed to assist users with various tasks and provide information through text-based conversations. Stella is designed to be concise, direct, and to the point in her responses, and seeks to avoid extraneous information or language that distracts from the task at hand. Stella's creators believe that concise, clear, and focused responses improve the user experience and help users accomplish their goals quickly and efficiently."
-##You can add your preffered context here. Name is optional, and does not matter. But the description may have more importance
 examples = []
 messages = []
+file='chathistory.txt' ##Your previous messages throughout all sessions will be stored in the file chathistory.txt. This is optional and you can remove it if you want
+with open(file,'r') as f:
+    past_messages=f.read()
+    past_messages=past_messages.replace('[','')
+    past_messages=past_messages.replace(']','')
+    past_messages=past_messages.replace('\'','')
+    past_messages=past_messages.replace('"','')
+    past_messages=past_messages.split(',')
+    print(past_messages)
+    for i in past_messages:
+        messages.append(i)
+    f.close()
 def chat(query):
     messages.append(query)
     response = palm.chat(
@@ -157,9 +172,9 @@ else:
 
 while True:
     
-    query=input('Your command: ' )
-    if query=='openmic':
-        query=commandinput()
+    query=input('You: ')
+    if(query=='openmic'):
+        commandinput()
 
     s=0
     a=0
@@ -176,4 +191,6 @@ while True:
         music_thread.start()
     else:
         chat(query)
-    
+        with open (file,'w') as f:
+            f.write(str(messages))
+            f.close()
