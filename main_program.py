@@ -67,16 +67,28 @@ def OpenBrowser(query):
 def AppLauncher(query):
     query=query.lower()
     if query=='launch calculator':
+        print('Assistant: Right away...')
+        engine.say('Right away')
+        engine.runAndWait()
         os.startfile('calc.exe')
         return 1
     elif query in('launch gallery','launch photos'):
+        print('Assistant: Right away...')
+        engine.say('Right away')
+        engine.runAndWait()
         os.startfile('ms-photos:')
         return 1
     elif query in ('launch email','launch mail'):
+        print('Assistant: Right away...')
+        engine.say('Right away')
+        engine.runAndWait()
         os.startfile('mailto:') #will open your default mail app
         return 1
     elif query=='launch discord':
-        os.startfile("C:\\Users\\wwwri\\Desktop\\Discord.lnk") #Path to the discord shortcut. You can add your preffered apps to open on command like this.
+        print('Assistant: Right away...')
+        engine.say('Right away')
+        engine.runAndWait()
+        os.startfile("C:\\Users\\User\\Desktop\\Discord.lnk") #Path to the discord shortcut. You can add your preffered apps to open on command like this.
     else:
         return 0
 
@@ -107,9 +119,10 @@ def reminder_set(query):
         return 1
 
 def submit():
-    reminder_win.destroy()
     title = titlebox.get()
     delay = int(time_box.get())
+    reminder_win.destroy()
+    print(f'Assistant: Reminder set for {title}, {delay} minutes from now.')
     delay=delay*60
     notification_thread = threading.Thread(target=sendnotif,args=(title,delay))
     notification_thread.start()
