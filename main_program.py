@@ -140,7 +140,6 @@ with open(file,'r') as f:
     past_messages=past_messages.replace('\'','')
     past_messages=past_messages.replace('"','')
     past_messages=past_messages.split(',')
-    print(past_messages)
     for i in past_messages:
         messages.append(i)
     f.close()
@@ -173,7 +172,7 @@ else:
 while True:
     
     query=input('You: ')
-    if(query=='openmic'):
+    if(query=='openmic'): #Type openmic after launching the program to give voice command.
         commandinput()
 
     s=0
