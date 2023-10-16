@@ -38,6 +38,7 @@ Without an API key you can still access the other features.
 - Develop a graphical user interface (UI) for a more user-friendly interaction.
 - Optimize the website launching feature to support opening any website by command.
 - Add the ability to play specific songs by their names.
+- Separate the main program into different codes. For example one file solely for music, one for reminder, and call them via the main program.
 - Enhance command flexibility and usability.
 
 ## Requirements
