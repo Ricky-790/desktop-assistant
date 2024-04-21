@@ -137,12 +137,13 @@ def sendnotif(notiftitle,delay):
 time_object = time.localtime()
 localtime = time.strftime('%H', time_object)
 localtime=int(localtime)
-if localtime>=5 and localtime<12:
-    engine.say('Good Morning!')
-    engine.runAndWait()
-elif localtime>=12 and localtime<18:
-    engine.say('Good Afternoon!')
-    engine.runAndWait()
-else:
-    engine.say('Good Evening!')
-    engine.runAndWait()
+def greet():
+    if localtime>=5 and localtime<12:
+        engine.say('Good Morning!')
+        engine.runAndWait()
+    elif localtime>=12 and localtime<18:
+        engine.say('Good Afternoon!')
+        engine.runAndWait()
+    else:
+        engine.say('Good Evening!')
+        engine.runAndWait()

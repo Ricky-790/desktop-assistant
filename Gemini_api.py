@@ -2,33 +2,32 @@ import google.generativeai as genai
 import os
 
 api_key = os.environ.get('GEMINI_API')
-print(api_key)
 genai.configure(api_key=api_key)
 
 # Set up the model
 generation_config = {
-  "temperature": 1,
-  "top_p": 0.95,
-  "top_k": 0,
+  "temperature": 2,
+  "top_p": 0.4,
+  "top_k": 32,
   "max_output_tokens": 8192,
 }
 
 safety_settings = [
   {
     "category": "HARM_CATEGORY_HARASSMENT",
-    "threshold": "BLOCK_ONLY_HIGH"
+    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
   },
   {
     "category": "HARM_CATEGORY_HATE_SPEECH",
-    "threshold": "BLOCK_ONLY_HIGH"
+    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
   },
   {
     "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-    "threshold": "BLOCK_ONLY_HIGH"
+    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
   },
   {
     "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-    "threshold": "BLOCK_ONLY_HIGH"
+    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
   },
 ]
 
@@ -50,5 +49,3 @@ convo = model.start_chat(history=[
 def chat(query):
     convo.send_message(query)
     return (convo.last.text)
-
-print(chat('You are cool'))
