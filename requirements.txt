@@ -4,3 +4,4 @@ SpeechRecognition==3.8.1
 pyttsx3==2.90
 pygame==2.1.1
 mutagen==1.45.1
+newsapi-python

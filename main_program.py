@@ -42,13 +42,23 @@ def send_message():
     if z==1:
         z=0
         n+=10
+        m=None
         s=0
         a=0
         r=0
         s=OpenBrowser(query)
         a=AppLauncher(query)
         r=reminder_set(query)
-        if s==1 or a==1 or r==1:
+        m=get_news(query)
+        if m!=None:
+            count=0
+            for i in m['articles']:
+                count+=1
+                post_msg((f"source: {i['source']['name']}\nauthor: {i['author']}\ntitle: {i['title']}\ndescription: {i['description']}\nurl: {i['url']}"), 'lia')
+                if count==5:
+                    break
+            m=1
+        if s==1 or a==1 or r==1 or m==1:
             pass
         elif query in ('play music','play some music','play a song'):
             engine.say('Playing a song from your library')

@@ -10,13 +10,52 @@ import mutagen.mp3
 import random
 import webbrowser
 from tkinter import *
+from newsapi import NewsApiClient
 
+api_key=os.environ.get('NEWS_API')
+newsapi = NewsApiClient(api_key=api_key)
 
 # Create a pyttsx3 engine
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)#(0 for male voice or 1 for female voice)
 engine.rate=1
+
+
+def get_news(query):
+    a = query.split()
+    if 'news' in a or 'articles' in a:
+        query=query.lower()
+
+        #Search news based on category
+        category=['business','technology','sports','science']
+        for i in category:
+            if i in query:
+                print(i)
+                top_headlines = newsapi.get_top_headlines(category=i,language='en')
+                break
+
+        # Search news based on keyword
+        # prepositions = ["about", "on", "of", "for", "in", "at", "with", "a", "an", "the","and", "or", "but","can","you",""]
+        words = query.split()
+        for word in words:
+            if word == 'about' or word == 'on':
+                keyword_index = words.index(word) + 1  # Get the index of 'about' or 'on'
+                if keyword_index < len(words):  # Check if there's a word after the preposition
+                    keyword = words[keyword_index]  # Extract the keyword after the preposition
+                    print(keyword)
+                    top_headlines = newsapi.get_top_headlines(q=keyword, language='en')
+                    break
+        if top_headlines:
+            engine.say("Here are some related articles:")
+            engine.runAndWait()
+            return top_headlines
+        else:
+            engine.say("Sorry, couldn't find what you were looking for")
+            engine.runAndWait()
+            return 1
+
+
 #Function to take input Via Mic
 def commandinput():
     r = sr.Recognizer()
