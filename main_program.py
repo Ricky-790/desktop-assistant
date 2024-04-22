@@ -9,7 +9,7 @@ n=0
 z=0
 
 def speak(response):
-    border_label.place(x=135, y=13)
+    border_label.place(x=135, y=6)
     engine.say(response)
     engine.runAndWait()
     border_label.place_forget()
@@ -79,21 +79,24 @@ border_image = ct.CTkImage(light_image=border_image, dark_image=border_image, si
 border_label = ct.CTkLabel(master=win, image=border_image, text='')
 
 
-image = Im.open("shaula.png")  # Replace with your image path
+image = Im.open("Lia.png")  # Replace with your image path
 image = image.resize((150, 150))  # Resize the image to fit the frame
 image = ct.CTkImage(light_image=image, dark_image=image, size=(150,150))
 
 image_label = ct.CTkLabel(master=win, image=image, text='')
-image_label.place(x=150, y=25)
+image_label.place(x=150, y=20)
+
+name_label = ct.CTkLabel(master=win, text='Lia', font=('Arial',18))
+name_label.place(x=215,y=182)
 
 screen = ct.CTkScrollableFrame(master=win,
                             width=420,
-                            height=40,
+                            height=38,
                             fg_color='#121111',
                             border_width=0.6,
                             border_color='#FFFFDD'
                             )
-screen.place(x=5, y=200)
+screen.place(x=5, y=210)
 
 Entrybox = ct.CTkEntry(master=win,
                  width = 350,
